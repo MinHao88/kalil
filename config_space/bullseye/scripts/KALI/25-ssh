@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# Enable ssh on boot, otherwise we're stuck
+chroot $FAI_ROOT systemctl enable ssh

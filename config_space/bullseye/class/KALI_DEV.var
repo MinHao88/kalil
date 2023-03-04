@@ -1,0 +1,3 @@
+SUITE=kali-dev
+FAI_DEBOOTSTRAP="$SUITE $apt_cdn/kali/"
+CLASS_BUILD="KALI_BUILD"

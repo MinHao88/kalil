@@ -1,0 +1,9 @@
+# The "EXTRAS" class defines an (admittedly opinionated) list of
+# packages that are commonly useful on a full-featured remote virtual
+# machine or cloud instance.
+#
+# You can customize the set of Kali metapackages (groups of tools) available
+# For the complete list see: https://www.kali.org/tools/kali-meta/
+
+PACKAGES install
+kali-linux-headless

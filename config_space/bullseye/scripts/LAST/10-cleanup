@@ -19,6 +19,10 @@ then
     rm -f $target/etc/resolv.conf
 fi
 
+# From kali-linux-headless
+rm -rf $target/tmp/hsperfdata_root \
+       $target/tmp/dotnet-installer
+
 rm -rf $target/var/cache/apt/*
 rm -rf $target/var/lib/apt/lists/*
 rm -rf $target/var/log/fai

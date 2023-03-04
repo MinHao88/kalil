@@ -51,11 +51,47 @@ releases:
   baseid: sid
   fai_classes: [SID, EXTRAS]
   arch_supports_linux_image_cloud: [amd64, arm64]
+- name: kali-rolling
+  basename: kali-rolling
+  id: kali-rolling
+  baseid: kali-rolling
+  fai_classes: [KALI, KALI_EXTRAS, KALI_ROLLING]
+  arch_supports_linux_image_cloud: [amd64, arm64]
+- name: kali-rolling-minimal
+  basename: kali-rolling
+  id: kali-rolling
+  baseid: kali-rolling
+  fai_classes: [KALI, KALI_ROLLING]
+  arch_supports_linux_image_cloud: [amd64, arm64]
+- name: kali-last-snapshot
+  basename: kali-last-snapshot
+  id: kali-last-snapshot
+  baseid: kali-last-snapshot
+  fai_classes: [KALI, KALI_EXTRAS, KALI_LAST_SNAPSHOT]
+  arch_supports_linux_image_cloud: [amd64, arm64]
+- name: kali-last-snapshot-minimal
+  basename: kali-last-snapshot
+  id: kali-last-snapshot
+  baseid: kali-last-snapshot
+  fai_classes: [KALI, KALI_LAST_SNAPSHOT]
+  arch_supports_linux_image_cloud: [amd64, arm64]
+- name: kali-dev
+  basename: kali-dev
+  id: kali-dev
+  baseid: kali-dev
+  fai_classes: [KALI, KALI_EXTRAS, KALI_DEV]
+  arch_supports_linux_image_cloud: [amd64, arm64]
+- name: kali-dev-minimal
+  basename: kali-dev
+  id: kali-dev
+  baseid: kali-dev
+  fai_classes: [KALI, KALI_DEV]
+  arch_supports_linux_image_cloud: [amd64, arm64]
 
 vendors:
 - name: azure
   fai_classes: [AZURE, IPV6_DHCP]
-  size: 30
+  size: 40 # kali-linux-everything is 30GB (at the time of commit!)
   use_linux_image_cloud: true
   matches:
   - matchArches: [amd64]
@@ -65,13 +101,13 @@ vendors:
   - matchArches: [arm64]
 - name: ec2
   fai_classes: [EC2, IPV6_DHCP]
-  size: 8
+  size: 12
   use_linux_image_cloud: true
   matches:
   - matchArches: [amd64, arm64]
 - name: gce
   fai_classes: [GCE]
-  size: 10
+  size: 12
   use_linux_image_cloud: true
   matches:
   - matchReleases: [bullseye]
@@ -79,10 +115,10 @@ vendors:
   - matchArches: [amd64]
 - name: generic
   fai_classes: [GENERIC]
-  size: 2
+  size: 12
 - name: genericcloud
   fai_classes: [GENERIC]
-  size: 2
+  size: 12
   use_linux_image_cloud: true
   matches:
   - matchReleases: [buster]
@@ -91,17 +127,17 @@ vendors:
   - matchArches: [amd64, arm64]
 - name: nocloud
   fai_classes: [NOCLOUD]
-  size: 2
+  size: 12
 
 types:
 - name: dev
   fai_classes: [TYPE_DEV]
-  output_name: 'debian-{release}-{vendor}-{arch}-{build_type}-{build_id}-{version}'
+  output_name: 'kali-{release}-{vendor}-{arch}-{build_type}-{build_id}-{version}'
   output_version: '{version}'
   output_version_azure: '0.0.{version!s}'
 - name: official
   fai_classes: []
-  output_name: 'debian-{release}-{vendor}-{arch}-{build_type}-{version}'
+  output_name: 'kali-{release}-{vendor}-{arch}-{build_type}-{version}'
   output_version: '{date}-{version}'
   output_version_azure: '0.{date!s}.{version!s}'
 

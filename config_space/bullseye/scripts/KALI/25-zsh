@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ -e $FAI_ROOT/usr/bin/zsh ]; then
+    echo "INFO: configuring root's shell to /usr/bin/zsh"
+    chroot $FAI_ROOT chsh --shell /usr/bin/zsh root
+else
+    echo "WARNING: zsh is missing so root's shell is unchanged"
+fi

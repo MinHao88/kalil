@@ -34,6 +34,26 @@ class TestEtc:
             'tcpdump',
             # From package uuid-runtime
             'uuidd',
+            # From kali-linux-headless
+            'Debian-snmp', 'inetsim', 'iodine', 'miredo', 'mysql', 'ntpsec',
+            'postgres', 'redsocks', 'sslh', 'statd', 'stunnel4',
+            # From kali-linux-default
+            'geoclue', 'king-phisher', 'rwhod',
+            # From kali-linux-large
+            'arpwatch', 'beef-xss', 'dradis',
+            # From kali-linux-everything
+            'cntlm', 'Debian-exim', 'debian-tor', 'freerad', 'freerad-wpe',
+            'gpsd', 'redis',
+            # From kali-desktop-core
+            'polkitd', 'rtkit', 'speech-dispatcher',
+            # From kali-desktop-xfce
+            '_chrony', 'avahi', 'colord', 'dnsmasq', 'lightdm',
+            'nm-openconnect', 'nm-openvpn', 'pulse',  'saned',
+             'strongswan', 'tss', 'usbmux',
+            # From kali-desktop-gnome
+            'Debian-gdm',
+            # From kali-desktop-kde
+            'fwupd-refresh', 'geoclue', 'sddm',
         ):
             return
         if name.startswith('_') or name.startswith('systemd-'):
@@ -43,11 +63,20 @@ class TestEtc:
     def test_passwd_shell(self, image_passwd_entry):
         name = image_passwd_entry.name
         shell = image_passwd_entry.shell
-        if shell == '/bin/bash' and name == 'root':
+        if shell in ('/bin/bash', '/bin/zsh', '/usr/bin/zsh') and name == 'root':
             return
         if shell == '/bin/sync' and name == 'sync':
             return
         if shell in ('/bin/false', '/sbin/nologin', '/usr/sbin/nologin'):
+            return
+        # From kali-linux-headless
+        if shell == '/bin/bash' and name == 'postgres':
+            return
+        # From kali-linux-large
+        if shell == '/bin/sh' and name == 'arpwatch':
+            return
+        # From kali-linux-everything
+        if shell == '/bin/sh' and name == 'cntlm':
             return
         pytest.fail('/etc/passwd includes user {} with not allowed shell {}'.format(name, shell), pytrace=False)
 

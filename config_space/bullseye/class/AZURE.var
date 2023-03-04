@@ -1,2 +1,7 @@
-apt_cdn=http://deb.debian.org
-security_cdn=http://deb.debian.org
+# Disable for now as it overrides the Kali mirror with a Debian mirror
+if ifclass -o KALI; then
+    :  # Don't override the mirror
+else
+    apt_cdn=http://deb.debian.org
+    security_cdn=http://deb.debian.org
+fi

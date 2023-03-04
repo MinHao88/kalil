@@ -4,5 +4,5 @@ python3-boto
 cloud-init
 cloud-guest-utils
 
-PACKAGES install-norec BULLSEYE SID
+PACKAGES install-norec BULLSEYE SID KALI
 amazon-ec2-utils

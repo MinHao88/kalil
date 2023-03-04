@@ -7,7 +7,7 @@ This repository aims to build Debian images for all cloud providers
 You will need a checkout of this repository on your disk and a recent fai-server
 package (at least 5.7) installed. Install the necessary fai packages without
 the recommends (which avoids turning your host into a DHCP server!).
-You also need python3-libcloud from Buster or newer.
+You also need python3-libcloud from kali-rolling or newer.
 
 ```
   # git clone https://salsa.debian.org/cloud-team/debian-cloud-images.git
@@ -21,26 +21,26 @@ You also need python3-libcloud from Buster or newer.
 Example 1:
 
 ```
-   # make image_sid_nocloud_amd64
+   # make image_kali-rolling_nocloud_amd64
 ```
 
 This will create some log output and the following files:
 
-- `image_sid_nocloud_amd64.build.json`
-- `image_sid_nocloud_amd64.info`
-- `image_sid_nocloud_amd64.raw`
-- `image_sid_nocloud_amd64.tar`
+- `image_kali-rolling_nocloud_amd64.build.json`
+- `image_kali-rolling_nocloud_amd64.info`
+- `image_kali-rolling_nocloud_amd64.raw`
+- `image_kali-rolling_nocloud_amd64.tar`
 
 Example 2:
 
 ```
-    # make image_buster_genericcloud_amd64
+    # make image_kali-last-snapshot-minimal_genericcloud_amd64
 ```
 
-- `image_buster_genericcloud_amd64.build.json`
-- `image_buster_genericcloud_amd64.info`
-- `image_buster_genericcloud_amd64.raw`
-- `image_buster_genericcloud_amd64.tar`
+- `image_kali-last-snapshot-minimal_genericcloud_amd64.build.json`
+- `image_kali-last-snapshot-minimal_genericcloud_amd64.info`
+- `image_kali-last-snapshot-minimal_genericcloud_amd64.raw`
+- `image_kali-last-snapshot-minimal_genericcloud_amd64.tar`
 
 These images can be used with QEMU-KVM, Virtualbox or any other virtualization
 backend that support raw disk images.
@@ -53,7 +53,7 @@ After the disk image is created you can try it with kvm, and wait 5s for the
 boot sequence to start:
 
 ```
-    # kvm -nic user,model=virtio -m 1024 -drive format=raw,file=image-buster-genericcloud-amd64.raw
+    # kvm -nic user,model=virtio -m 1024 -drive format=raw,file=image_kali-rolling_nocloud_amd64.raw
 ```
 
 ## Supported image types
@@ -65,8 +65,9 @@ cases. Each type of image can be built with the following command:
     # make image_<suite>_<type>_<arch>
 ```
 
-where `<suite>` is one of `buster`, `bullseye`, or `sid`. `<type>` can
-be any of the following:
+where `<suite>` is one of `kali-rolling`, `kali-last-snapshot`, or `kali-dev` to switch [branches](https://www.kali.org/docs/general-use/kali-branches/).
+You can also add `-minimal` at the end of `<suite>`, to create an image without any [metapackages](https://www.kali.org/tools/kali-meta/).
+`<type>` can be any of the following:
 
  * `azure`: Optimized for Microsoft's cloud computing platform Azure
  * `ec2`: Optimized for the Amazon Elastic Compute Cloud (EC2)

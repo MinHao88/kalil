@@ -4,28 +4,28 @@ import enum
 @enum.unique
 class ImagePublicType(enum.Enum):
     dev = {
-        'azure_offer': 'debian-test',
+        'azure_offer': 'kali-test',
         'azure_sku': '{release_id}',
-        'family': 'debian-{release_id}-{vendor}-{arch}-dev-{build_id}',
-        'path': '{release}/dev/{build_id}/debian-{release_id}-{vendor}-{arch}-dev-{build_id}-{version}',
-        'vendor_family': 'debian-{release_id}-{arch}-dev-{build_id}',
-        'vendor_description': 'Debian {release_id} (development build {build_id}-{version})',
+        'family': '{release_id}-{vendor}-{arch}-dev-{build_id}',
+        'path': '{release}/dev/{build_id}/{release_id}-{vendor}-{arch}-dev-{build_id}-{version}',
+        'vendor_family': '{release_id}-{arch}-dev-{build_id}',
+        'vendor_description': 'Kali Linux {release_id} (development build {build_id}-{version})',
     }
     daily = {
-        'azure_offer': 'debian-{release_baseid}-daily',
+        'azure_offer': 'kali-{release_baseid}-daily',
         'azure_sku': '{release_id}',
-        'family': 'debian-{release_id}-{vendor}-{arch}-daily',
-        'path': '{release}/daily/{version}/debian-{release_id}-{vendor}-{arch}-daily-{version}',
-        'vendor_family': 'debian-{release_id}-{arch}-daily',
-        'vendor_description': 'Debian {release_id} (daily build {version})',
+        'family': '{release_id}-{vendor}-{arch}-daily',
+        'path': '{release}/daily/{version}/{release_id}-{vendor}-{arch}-daily-{version}',
+        'vendor_family': '{release_id}-{arch}-daily',
+        'vendor_description': 'Kali Linux {release_id} (daily build {version})',
     }
     release = {
-        'azure_offer': 'debian-{release_baseid}',
+        'azure_offer': 'kali-{release_baseid}',
         'azure_sku': '{release_id}',
-        'family': 'debian-{release_id}-{vendor}-{arch}',
-        'path': '{release}/{version}/debian-{release_id}-{vendor}-{arch}-{version}',
-        'vendor_family': 'debian-{release_id}-{arch}',
-        'vendor_description': 'Debian {release_id} ({version})',
+        'family': '{release_id}-{vendor}-{arch}',
+        'path': '{release}/{version}/{release_id}-{vendor}-{arch}-{version}',
+        'vendor_family': '{release_id}-{arch}',
+        'vendor_description': 'Kali Linux {release_id} ({version})',
     }
 
 

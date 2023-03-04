@@ -1,0 +1,1 @@
+deb {%apt_cdn%}/kali {%SUITE%} main contrib non-free

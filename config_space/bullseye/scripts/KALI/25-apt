@@ -1,0 +1,14 @@
+#!/bin/sh
+
+echo "Before:"
+cat $FAI_ROOT/etc/apt/sources.list
+
+sed -i \
+    -e 's|http://.*/kali |http://kali.download/kali |g' \
+    -e 's/kali-last-snapshot/kali-rolling/g' \
+    $FAI_ROOT/etc/apt/sources.list
+
+echo "After:"
+cat $FAI_ROOT/etc/apt/sources.list
+
+chroot $FAI_ROOT apt-get update

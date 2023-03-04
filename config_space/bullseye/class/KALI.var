@@ -1,0 +1,5 @@
+apt_cdn=http://http.kali.org
+# NB: we discard existing debootstrap opts that were set in DEBIAN.var:
+# that's on purpose, it sets '--variant minbase' and we don't want that,
+# for Kali we want to install packages with 'Priority: important'.
+FAI_DEBOOTSTRAP_OPTS="--include=kali-archive-keyring"
